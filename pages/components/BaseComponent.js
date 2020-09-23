@@ -3,17 +3,17 @@ import react, {Component} from 'react'
 import Router       from 'next/router';
 import { login, usuariosExistentes } from './helper';
 
+import Constantes from './Constantes'
+
 
 class BaseComponent extends Component{
 
-    static isLogged = true;
+    static Constantes = Constantes
+    static isLogged = false;
     static dataLogged = {};
 
     constructor(props){
         super(props);
-        //this.redirectTo = this.redirectTo.bind(this);
-    
-        //this.logout = this.logout.bind(this);
         this.login = this.login.bind(this);
         this.isLogged = this.isLogged.bind(this);
         this.logout = this.logout.bind(this);
@@ -21,18 +21,18 @@ class BaseComponent extends Component{
     }
 
     componentDidMount(){
-
     }
     
     login(data){
         BaseComponent.isLogged = true;
         BaseComponent.dataLogged = data;
+        this.redirectTo('/home','/home')
     }
 
     logout(){
-		BaseComponent.isLogged = false;
-		BaseComponent.dataLogged = {};
-		this.redirectTo("/", "/");
+        BaseComponent.isLogged = false;
+        BaseComponent.dataLogged = {};
+        this.redirectTo("/login", "/login");  
     }
     
     getUsuariosExistentes(){
@@ -43,8 +43,12 @@ class BaseComponent extends Component{
 
     isLogged(){ return BaseComponent.isLogged }
 
-    redirectTo(to, alias){
-		Router.push(to, alias);
+    redirectTo(to, alias, query){
+		Router.push({
+            pathname: to,
+            alias: alias,
+            query: query
+        });
     }
     
 }

@@ -78,7 +78,7 @@ class TablaUsuarios extends BaseComponent {
             this.telefono.current.value = ''
             this.correo.current.value = ''
 
-            this.setState({ tableData: this.data })
+            this.setPage(1);
         }
     }
 
@@ -119,7 +119,7 @@ class TablaUsuarios extends BaseComponent {
                     <div className="tablaUsuarios-contenido">
                         <div className="tablaUsuarios-title">
                             <div>
-                                <img src="./icons/grupo.svg" />
+                                <img src={BaseComponent.Constantes.grupo} />
                                 <p> Usuarios Existentes </p>
                             </div>
                             <button onClick={(e) => this.setState({ isModalOpen: true })}> Crear </button>
@@ -146,13 +146,13 @@ class TablaUsuarios extends BaseComponent {
                                     <td> {usuario['estado']} </td>
                                     <td> {usuario['telefono']} </td>
                                     <td> {usuario['correo_electronico']} </td>
-                                    <td> <div> <img src="./icons/lapiz.svg" /> <img src="./icons/borrar.svg" /> </div> </td>
+                                    <td> <div> <img src={BaseComponent.Constantes.lapiz} /> <img src={BaseComponent.Constantes.borrar} /> </div> </td>
                                 </tr>)}
                             </tbody>
                         </table>
                         <div className="tablaUsuarios-pages">
-                            <img onClick={this.handleChangePage} id="primera" src="./icons/final-left.svg" />
-                            <img onClick={this.handleChangePage} id="anterior" src="./icons/galon-izquierdo.svg" />
+                            <img onClick={this.handleChangePage} id="primera" src={BaseComponent.Constantes.finalLeft} />
+                            <img onClick={this.handleChangePage} id="anterior" src={BaseComponent.Constantes.galonIzquierdo} />
                             <div className="tablaUsuarios-numbers">
                                 {visiblePages.map((page, index, array) => {
                                     return (
@@ -166,14 +166,14 @@ class TablaUsuarios extends BaseComponent {
                                     );
                                 })}
                             </div>
-                            <img onClick={this.handleChangePage} id="siguiente" src="./icons/galon-derecho.svg" />
-                            <img onClick={this.handleChangePage} id="ultima" src="./icons/final-right.svg" />
+                            <img onClick={this.handleChangePage} id="siguiente" src={BaseComponent.Constantes.galonDerecho} />
+                            <img onClick={this.handleChangePage} id="ultima" src={BaseComponent.Constantes.finalRight} />
                         </div>
                     </div>
 
                     <form className="form-busqueda" onSubmit={this.handleOnClick} id="filtrar">
                         <div className="form-title">
-                            <img src="./icons/seguir.svg" />
+                            <img src={BaseComponent.Constantes.seguir} />
                             <p> Filtrar búsqueda </p>
                         </div>
                         <div>
@@ -221,7 +221,7 @@ class TablaUsuarios extends BaseComponent {
                                 <form onSubmit={this.handleOnRegister}>
                                     <div className="crearUsuario-header">
                                         <p> Agregar un nuevo usuario </p>
-                                        <img className="modal-cerrar" src="./icons/cerrar.svg" onClick={(e) => this.setState({ isModalOpen: false })} />
+                                        <img className="modal-cerrar" src={BaseComponent.Constantes.cerrar} onClick={(e) => this.setState({ isModalOpen: false })} />
                                     </div>
 
                                     <div className="crearUsuario-columna">

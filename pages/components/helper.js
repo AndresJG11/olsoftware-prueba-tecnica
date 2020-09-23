@@ -19,7 +19,7 @@ export const login = async (username, password, context) => {
                 context.username.current.value = "";
                 context.password.current.value = "";
                 context.login(responseJson[0]);
-                context.redirectTo("/home", "/home");
+                //context.redirectTo("/home", "/home");
             }
             else {
                 console.log("fallo al iniciar sesion")
