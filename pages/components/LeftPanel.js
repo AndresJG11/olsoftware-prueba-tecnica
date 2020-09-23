@@ -13,6 +13,7 @@ class LeftPanel extends BaseComponent{
         e.persist();
         const {id} = e.target;
         this.setState( {itemSelected: id} );
+        this.redirectTo('/constructionPage', '/constructionPage')
     }
 
     toggleMenu(){
