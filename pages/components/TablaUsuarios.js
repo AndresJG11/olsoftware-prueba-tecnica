@@ -23,7 +23,7 @@ class TablaUsuarios extends BaseComponent {
     }
 
     async componentDidMount() {
-        if(BaseComponent.isLogged){
+        if (BaseComponent.isLogged) {
             this.data = await this.getUsuariosExistentes();
             this.setPage(1);
         }
@@ -117,7 +117,9 @@ class TablaUsuarios extends BaseComponent {
         const { tableData, isModalOpen, visiblePages, currentPage } = this.state;
         return (
             <main className={`${isModalOpen && 'loading'}`}>
+
                 <div className="tablaUsuarios-root">
+
                     <div className="tablaUsuarios-contenido">
                         <div className="tablaUsuarios-title">
                             <div>
@@ -126,51 +128,55 @@ class TablaUsuarios extends BaseComponent {
                             </div>
                             <button onClick={(e) => this.setState({ isModalOpen: true })}> Crear </button>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th> Nombres </th>
-                                    <th> Apellidos </th>
-                                    <th> Identificación (C.C) </th>
-                                    <th> Rol Asociado </th>
-                                    <th> Estado </th>
-                                    <th> Teléfono </th>
-                                    <th> Correo Electrónico </th>
-                                    <th> Acción </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tableData.length > 0 && tableData.map(usuario => <tr key={usuario.id}>
-                                    <td> {usuario['nombre']} </td>
-                                    <td> {usuario['apellidos']} </td>
-                                    <td> {usuario['identificacion']} </td>
-                                    <td> {usuario['rol_asociado']} </td>
-                                    <td> {usuario['estado']} </td>
-                                    <td> {usuario['telefono']} </td>
-                                    <td> {usuario['correo_electronico']} </td>
-                                    <td> <div> <img src={BaseComponent.Constantes.lapiz} /> <img src={BaseComponent.Constantes.borrar} /> </div> </td>
-                                </tr>)}
-                            </tbody>
-                        </table>
-                        <div className="tablaUsuarios-pages">
-                            <img onClick={this.handleChangePage} id="primera" src={BaseComponent.Constantes.finalLeft} />
-                            <img onClick={this.handleChangePage} id="anterior" src={BaseComponent.Constantes.galonIzquierdo} />
-                            <div className="tablaUsuarios-numbers">
-                                {visiblePages.map((page, index, array) => {
-                                    return (
-                                        <p
-                                            key={page}
-                                            className={currentPage === page ? "page-active" : ''}
-                                            onClick={() => this.setPage(page)}
-                                        >
-                                            {array[index - 1] + 2 < page ? `...${page}` : page}
-                                        </p>
-                                    );
-                                })}
+
+                        <div className="tablaUsuarios-tabla">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th> Nombres </th>
+                                        <th> Apellidos </th>
+                                        <th> Identificación (C.C) </th>
+                                        <th> Rol Asociado </th>
+                                        <th> Estado </th>
+                                        <th> Teléfono </th>
+                                        <th> Correo Electrónico </th>
+                                        <th> Acción </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tableData.length > 0 && tableData.map(usuario => <tr key={usuario.id}>
+                                        <td> {usuario['nombre']} </td>
+                                        <td> {usuario['apellidos']} </td>
+                                        <td> {usuario['identificacion']} </td>
+                                        <td> {usuario['rol_asociado']} </td>
+                                        <td> {usuario['estado']} </td>
+                                        <td> {usuario['telefono']} </td>
+                                        <td> {usuario['correo_electronico']} </td>
+                                        <td> <div> <img src={BaseComponent.Constantes.lapiz} /> <img src={BaseComponent.Constantes.borrar} /> </div> </td>
+                                    </tr>)}
+                                </tbody>
+                            </table>
+                            <div className="tablaUsuarios-pages">
+                                <img onClick={this.handleChangePage} id="primera" src={BaseComponent.Constantes.finalLeft} />
+                                <img onClick={this.handleChangePage} id="anterior" src={BaseComponent.Constantes.galonIzquierdo} />
+                                <div className="tablaUsuarios-numbers">
+                                    {visiblePages.map((page, index, array) => {
+                                        return (
+                                            <p
+                                                key={page}
+                                                className={currentPage === page ? "page-active" : ''}
+                                                onClick={() => this.setPage(page)}
+                                            >
+                                                {array[index - 1] + 2 < page ? `...${page}` : page}
+                                            </p>
+                                        );
+                                    })}
+                                </div>
+                                <img onClick={this.handleChangePage} id="siguiente" src={BaseComponent.Constantes.galonDerecho} />
+                                <img onClick={this.handleChangePage} id="ultima" src={BaseComponent.Constantes.finalRight} />
                             </div>
-                            <img onClick={this.handleChangePage} id="siguiente" src={BaseComponent.Constantes.galonDerecho} />
-                            <img onClick={this.handleChangePage} id="ultima" src={BaseComponent.Constantes.finalRight} />
                         </div>
+
                     </div>
 
                     <form className="form-busqueda" onSubmit={this.handleOnClick} id="filtrar">

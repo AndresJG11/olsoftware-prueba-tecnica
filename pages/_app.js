@@ -42,6 +42,7 @@ class MyApp extends BaseComponent {
           <title>OLSoftware</title>
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
         </Head>
         {(BaseComponent.isLogged) ? <>
           <LeftPanel ref={this.myPanel} />

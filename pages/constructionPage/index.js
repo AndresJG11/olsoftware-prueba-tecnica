@@ -1,11 +1,10 @@
-import react from 'react';
-import BaseComponent from './BaseComponent';
+import BaseComponent from '../components/BaseComponent';
 
 class ConstructionPage extends BaseComponent{
    
     render(){
         return(
-            <h1> Hola :3</h1>
+            <h1> Página en construcción </h1>
         );
     }    
 }

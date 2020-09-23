@@ -30,7 +30,7 @@ class BaseComponent extends Component{
     login(data){
         BaseComponent.isLogged = true;
         BaseComponent.dataLogged = data;
-        this.redirectTo('/home','/home')
+        this.redirectTo('/roles','/roles')
     }
 
     logout(){

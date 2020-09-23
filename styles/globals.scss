@@ -218,7 +218,8 @@ footer{
     justify-content: center;
   }
   h1{
-    color: white
+    color: #ffffff;
+    text-align: center;
   }
 }
 
@@ -362,7 +363,7 @@ main.loading .modal {
 
 
 
-/** TABLA USUARIOS **/
+/*** TABLA USUARIOS ***/
 
 .tablaUsuarios-root{
   display: flex;
@@ -547,3 +548,213 @@ main.loading .modal {
 
 /*** FINAL TABLA USUARIOS ***/
 
+
+/*** RESPONSIVE (DESKTOP FIRST) ***/
+
+/*** MOBILE_LOGIN ***/
+
+@media only screen and (max-width: 600px) {
+  .login-root{
+    height: 100% !important;
+    main{
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+    }
+    .login-background-effect{
+      width: 95%;
+      height: 95%;
+      top: -10%;
+      left: -5%;
+      border-radius: 0% 0% 110% 10%;
+    }
+    .login-texto{
+      margin-top: 20px;
+      margin-left: 10px;
+      p{
+        margin-top: 5px;
+      }
+    }
+    .login-form{
+      border-radius: 20px;
+      height: 10% !important;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px 20px !important;
+      width: 90%;
+    }
+    footer{
+      bottom: 0px !important;
+      color: #434343;
+      position: fixed !important;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  
+  /*** END MOBILE_LOGIN ***/
+  
+  
+  /*** MOBILE_LEFTPANEL ***/
+  
+  .leftpanel-root{
+    width: 50px;
+    .leftpanel-icon{
+      margin: 10px !important;
+    }
+    li{
+      margin: 0px !important;
+      padding: 0px !important;
+    }
+  }
+  
+  /*** END MOBILE_LEFTPANEL ***/
+  
+  
+  /*** MOBILE_HEADER ***/
+  
+  .header{
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    .header-toggle{
+      h1{
+        margin: 0px;
+        margin-left: 10px;
+      }
+    }
+  .header-userinfo{
+    display: none;
+  }
+}
+
+
+/*** END MOBILE_HEADER ***/
+
+
+/*** MOBILE_HOME ***/
+
+.home-body{
+  margin-left: 50px !important;
+}
+    footer{
+      position: static !important;
+    }
+
+/*** END MOBILE_HOME ***/
+
+
+/*** TABLA USUARIOS ***/
+
+.tablaUsuarios-root{
+  .modal{
+    .modal-vista{
+      .modal-crearUsuario{
+        padding: 10px;
+        width: 90%;
+        height: 90%;
+        overflow: scroll;
+        .crearUsuario-header{
+          p{
+            margin: 5px;
+            margin-bottom: 10px;
+          }
+        }
+        .crearUsuario-row{
+          margin: 5px;
+          width: 100%;
+        }
+        .crearUsuario-columna{
+          float: none;
+          margin: auto;
+          width: 90%;
+        }
+        form .container-buttons{
+          margin-top: 30px;
+          button{
+            padding: 10px 20px;
+          }
+        }
+      }
+    }
+  }
+  .tablaUsuarios-contenido{
+    padding: 10px;
+    .tablaUsuarios-title{
+      padding-bottom: 10px;
+      div{
+        p{
+          font-size: 1em;
+        }
+      }
+      button{
+        padding: 0px 10px;
+        float: right;
+        margin-right: 10px;
+      }
+    }
+
+    .tablaUsuarios-tabla{
+      display: flex;
+      flex-direction: column-reverse;
+      .tablaUsuarios-pages{
+        margin: 0px;
+      }
+    }
+    
+    table tbody td{
+      padding-top: 30px;
+      padding-bottom: 10px;
+    }
+    
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; margin-top: 10px; }
+    
+    td { 
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 50%; 
+    }
+    
+    td:before { 
+      font-weight: bolder;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      padding-right: 10px; 
+      width: 45%; 
+      white-space: nowrap;
+    }
+    td:nth-of-type(1):before { content: "Nombre"; }
+    td:nth-of-type(2):before { content: "Apellidos"; }
+    td:nth-of-type(3):before { content: "Identificación (C.C)"; }
+    td:nth-of-type(4):before { content: "Rol Asociado"; }
+    td:nth-of-type(5):before { content: "Estado"; }
+    td:nth-of-type(6):before { content: "Teléfono"; }
+    td:nth-of-type(7):before { content: "Correo Electrónico"; }
+    td:nth-of-type(8):before { content: "Acción"; }
+  }
+  .form-busqueda{
+    display: none;
+  }
+}
+
+
+
+/*** END TABLA USUARIOS ***/
+
+/*** END RESPONSIVE ***/
+
+
+}
