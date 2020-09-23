@@ -189,32 +189,40 @@ class TablaUsuarios extends BaseComponent {
                             <input autoComplete="off" ref={this.nombre} type="text" name="nombre" />
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Apellidos </label>
-                            <input autoComplete="off" ref={this.apellidos} type="text" name="nombre" />
+                            <label htmlFor="apellido"> Apellidos </label>
+                            <input autoComplete="off" ref={this.apellidos} type="text" name="apellido" />
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Identificación (C.C) </label>
-                            <input autoComplete="off" ref={this.identificacion} type="number" name="nombre" />
+                            <label htmlFor="identificacion"> Identificación (C.C) </label>
+                            <input autoComplete="off" ref={this.identificacion} type="number" name="identificacion" />
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Rol asociado </label>
-                            <input autoComplete="off" ref={this.rolAsociado} type="select" name="nombre" />
+                            <label htmlFor="rolAsociado"> Rol Asociado </label>
+                            <select name="rolAsociado" ref={this.rolAsociado}>
+                                <option value="administrador" selected> Administrador </option>
+                                <option value="conductor"> Conductor </option>
+                                <option value="coordinador"> Coordinador </option>
+                                <option value="digitalizadorGC-UNO"> Digitalizador GC-UNO </option>
+                            </select>
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Estado </label>
-                            <input autoComplete="off" ref={this.estado} type="select" name="nombre" />
+                            <label htmlFor="estado"> Estado </label>
+                            <select name="estado" ref={this.estado}>
+                                <option value="activo" selected> Activo </option>
+                                <option value="inactivo"> Inactivo </option>
+                            </select>
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Contraseña </label>
-                            <input autoComplete="off" ref={this.password} type="password" name="nombre" />
+                            <label htmlFor="password"> Contraseña </label>
+                            <input autoComplete="off" ref={this.password} type="password" name="password" />
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Teléfono </label>
-                            <input autoComplete="off" ref={this.telefono} type="number" name="nombre" />
+                            <label htmlFor="telefono"> Teléfono </label>
+                            <input autoComplete="off" ref={this.telefono} type="number" name="telefono" />
                         </div>
                         <div>
-                            <label htmlFor="nombre"> Correo Electrónico </label>
-                            <input autoComplete="off" ref={this.correo} type="text" name="nombre" />
+                            <label htmlFor="correElectronico"> Correo Electrónico </label>
+                            <input autoComplete="off" ref={this.correo} type="text" name="correElectronico" />
                         </div>
                         <div className="container-buttons">
                             <button className="btn-filtrar" type="submit"> Filtrar </button>
@@ -242,8 +250,13 @@ class TablaUsuarios extends BaseComponent {
                                             <input type="text" name="nombre" />
                                         </div>
                                         <div className="crearUsuario-row">
-                                            <label htmlFor="nombre"> Estado </label>
-                                            <input type="number" name="nombre" />
+                                            <div>
+                                                <label htmlFor="estado"> Estado </label>
+                                                <select name="estado">
+                                                    <option value="activo" selected> Activo </option>
+                                                    <option value="inactivo"> Inactivo </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div className="crearUsuario-row">
                                             <label htmlFor="nombre"> Teléfono </label>
@@ -253,8 +266,11 @@ class TablaUsuarios extends BaseComponent {
 
                                     <div className="crearUsuario-columna">
                                         <div className="crearUsuario-row">
-                                            <label htmlFor="nombre"> Estado </label>
-                                            <input type="select" name="nombre" />
+                                            <label htmlFor="estado"> Estado </label>
+                                            <select name="estado" >
+                                                <option value="activo" selected> Activo </option>
+                                                <option value="inactivo"> Inactivo </option>
+                                            </select>
                                         </div>
                                         <div className="crearUsuario-row">
                                             <label htmlFor="nombre"> Contraseña </label>
