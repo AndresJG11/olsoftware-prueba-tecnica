@@ -75,6 +75,7 @@ a {
       height: 50px;
       padding: 10px 0px;
       margin: 10px 5px;
+      z-index: 100;
       width: auto;
       &:hover{
         background: rgba( 254, 254, 254, .2 )
@@ -86,6 +87,7 @@ a {
       margin-right: 30px;
       margin-left: 22px;
       justify-content: center;
+      z-index: -1;
       width: 30px;
       p{
         color: #FFFFFF;
@@ -100,6 +102,7 @@ a {
       }
     }
     img{
+      z-index: -1;
       width: 30px;
     }
   }
@@ -344,14 +347,25 @@ main.loading .modal {
   justify-content: space-between;
 
   .modal-crearUsuario{
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 20px;
-    height: 50%;
+    height: fit-content;
+    padding: 10px 30px;
     width: 50%;
-    p{
-      color: #111111;
-      font-size: 1.5em;
-      margin: 20px;
+    .crearUsuario-header{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      //background-color: blue;
+      img{
+        cursor: pointer;
+        width: 20px;
+      }
+      p{
+        color: #111111;
+        font-size: 1.5em;
+        margin: 20px;
+      }
     }
     .crearUsuario-columna{
       float: left;
@@ -369,15 +383,47 @@ main.loading .modal {
         width: 100%;
       }
     }
+    .container-buttons{
+      font-size: 1.1em;
+      width: 100%;
+      .btn-filtrar{
+        margin-left: auto;
+        margin-right: 25px;
+      }
+      .btn-limpiar{
+        margin-right: auto;
+        margin-left: 25px;
+      }
+    }
   }
   
   .tablaUsuarios-contenido{
     background-color: #ffffff;
     border-radius: 5px;
     padding: 30px;
-    //float: right;
     margin-left: auto;
     width: 100%;
+    .tablaUsuarios-pages{
+      cursor: pointer;
+      display: inline-flex;
+      float: right;
+      margin: 10px;
+      .tablaUsuarios-numbers{
+        display: inline-flex;
+      }
+      img{
+        width: 15px;
+      }
+      p{
+        font-size: 1.2em;
+        margin: 5px;
+        padding: 0px;
+      }
+      .page-active{
+        text-decoration: none;
+        border-bottom: 3px solid #8EA1D6;
+      }
+    }
     .tablaUsuarios-title{
       color: #1e44ad;
       display: flex;

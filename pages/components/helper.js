@@ -30,4 +30,8 @@ export const login = async (username, password, context) => {
         });
 }
 
-export const usuariosExistentes = fetch(url_base+'/usuarios-existentes');
+export const usuariosExistentes = async () => {
+    const response = await fetch(url_base+'/usuarios-existentes');
+    const data = await response.json();
+    return data;
+}

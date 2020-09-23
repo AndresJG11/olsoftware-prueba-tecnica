@@ -5,7 +5,7 @@ class TablaUsuarios extends BaseComponent {
 
     constructor(props) {
         super(props);
-        this.state = { tableData: [], isModalOpen: true }
+        this.state = { tableData: [], isModalOpen: false, currentPage: 1, visiblePages: [1, 2] }
         this.data = []
 
         this.nombre = React.createRef();
@@ -18,13 +18,33 @@ class TablaUsuarios extends BaseComponent {
         this.correo = React.createRef();
 
         this.handleOnClick = this.handleOnClick.bind(this)
+        this.handleChangePage = this.handleChangePage.bind(this)
+        this.setPage = this.setPage.bind(this)
     }
 
     async componentDidMount() {
-        //const response = await this.getUsuariosExistentes();
-        //const data = await response.json()
-        //this.data = data;
-        // this.setState({ tableData: data })
+        this.data = await this.getUsuariosExistentes();
+        this.setPage(1);
+    }
+    handleOnRegister(e) {
+        e.preventDefault();
+    }
+
+    handleChangePage(e) {
+        const { id } = e.target;
+        const { currentPage } = this.state
+
+        if (id === "siguiente") {
+            this.setPage(currentPage + 1);
+        } else if (id === "anterior") {
+            this.setPage(currentPage - 1);
+        } else if (id === "primera") {
+            this.setPage(1);
+        } else if (id === "ultima") {
+            this.setPage('ultima');
+        }
+
+
     }
 
     handleOnClick(e) {
@@ -32,7 +52,6 @@ class TablaUsuarios extends BaseComponent {
         const { id } = e.target;
         if (id === "filtrar") {
             const nombre = this.nombre.current.value
-            console.log(nombre)
             const apellidos = this.apellidos.current.value
             const identificacion = this.identificacion.current.value
             const rolAsociado = this.rolAsociado.current.value
@@ -63,8 +82,37 @@ class TablaUsuarios extends BaseComponent {
         }
     }
 
+    setPage(currentPage = 1, visibleItems = 8) {
+        if (this.data.length > 0 && currentPage > 0 || currentPage === 'ultima') {
+            currentPage = currentPage === 'ultima' ? Math.ceil(this.data.length / visibleItems) : currentPage;
+            const final = currentPage * visibleItems;
+            const init = final - visibleItems;
+            this.setState({ tableData: this.data.slice(init, final), currentPage: currentPage, visiblePages: this.getVisiblePages(visibleItems) })
+        }
+    }
+
+    filterPages = (visiblePages, totalPages) => {
+        return visiblePages.filter(page => page <= totalPages);
+    };
+
+    getVisiblePages(visibleItems) {
+        const total = Math.ceil(this.data.length / visibleItems)
+        const { currentPage } = this.state
+        if (total < 5 && total > 0) {
+            return this.filterPages([1, 2, 3, 4, 5], total);
+        } else {
+            if (currentPage % 5 >= 0 && currentPage > 4 && currentPage + 2 < total) {
+                return [1, currentPage - 1, currentPage, currentPage + 1, total];
+            } else if (currentPage % 5 >= 0 && currentPage > 4 && currentPage + 2 >= total) {
+                return [1, total - 3, total - 2, total - 1, total];
+            } else {
+                return [1, 2, 3, 4, 5, total];
+            }
+        }
+    };
+
     render() {
-        const { tableData, isModalOpen } = this.state;
+        const { tableData, isModalOpen, visiblePages, currentPage } = this.state;
         return (
             <main className={`${isModalOpen && 'loading'}`}>
                 <div className="tablaUsuarios-root">
@@ -102,6 +150,25 @@ class TablaUsuarios extends BaseComponent {
                                 </tr>)}
                             </tbody>
                         </table>
+                        <div className="tablaUsuarios-pages">
+                            <img onClick={this.handleChangePage} id="primera" src="./icons/final-left.svg" />
+                            <img onClick={this.handleChangePage} id="anterior" src="./icons/galon-izquierdo.svg" />
+                            <div className="tablaUsuarios-numbers">
+                                {visiblePages.map((page, index, array) => {
+                                    return (
+                                        <p
+                                            key={page}
+                                            className={currentPage === page ? "page-active" : ''}
+                                            onClick={() => this.setPage(page)}
+                                        >
+                                            {array[index - 1] + 2 < page ? `...${page}` : page}
+                                        </p>
+                                    );
+                                })}
+                            </div>
+                            <img onClick={this.handleChangePage} id="siguiente" src="./icons/galon-derecho.svg" />
+                            <img onClick={this.handleChangePage} id="ultima" src="./icons/final-right.svg" />
+                        </div>
                     </div>
 
                     <form className="form-busqueda" onSubmit={this.handleOnClick} id="filtrar">
@@ -115,7 +182,7 @@ class TablaUsuarios extends BaseComponent {
                         </div>
                         <div>
                             <label htmlFor="nombre"> Apellidos </label>
-                            <input ref={this.apellido} type="text" name="nombre" />
+                            <input ref={this.apellidos} type="text" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Identificación (C.C) </label>
@@ -151,8 +218,11 @@ class TablaUsuarios extends BaseComponent {
                         <div className="modal-vista">
 
                             <div className="modal-crearUsuario">
-                                <form>
-                                    <p> Agregar un nuevo usuario </p>
+                                <form onSubmit={this.handleOnRegister}>
+                                    <div className="crearUsuario-header">
+                                        <p> Agregar un nuevo usuario </p>
+                                        <img className="modal-cerrar" src="./icons/cerrar.svg" onClick={(e) => this.setState({ isModalOpen: false })} />
+                                    </div>
 
                                     <div className="crearUsuario-columna">
                                         <div className="crearUsuario-row">
@@ -192,10 +262,10 @@ class TablaUsuarios extends BaseComponent {
                                         </div>
                                     </div>
 
-                                <div className="container-buttons">
-                                    <button className="btn-filtrar" type="submit"> Filtrar </button>
-                                    <button className="btn-limpiar" id="limpiar" type="button" onClick={this.handleOnClick}> Limpiar </button>
-                                </div>
+                                    <div className="container-buttons">
+                                        <button className="btn-filtrar" type="submit"> Aceptar </button>
+                                        <button className="btn-limpiar" type="button" onClick={(e) => this.setState({ isModalOpen: false })} > Cancelar </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -37,7 +37,7 @@ class BaseComponent extends Component{
     
     getUsuariosExistentes(){
         if(BaseComponent.isLogged){
-            return usuariosExistentes;
+            return usuariosExistentes();
         }
     }
 
