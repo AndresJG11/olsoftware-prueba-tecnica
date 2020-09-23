@@ -45,11 +45,11 @@ class Login extends BaseComponent {
                 <span> Inicio de sesión </span>
                 <form onSubmit={handleOnSubmit}>
                   <div id="input_container">
-                    <input type="text" placeholder="Usuario" ref={this.username} defaultValue="user" />
+                    <input type="text" placeholder="Usuario" ref={this.username} defaultValue="user" autoComplete="off" />
                     <img src={BaseComponent.Constantes.loginUserIcon} id="input_img" />
                   </div>
                   <div id="input_container">
-                    <input type="password" placeholder="Contraseña" ref={this.password} defaultValue="user" />
+                    <input type="password" placeholder="Contraseña" ref={this.password} defaultValue="user" autoComplete="off" />
                     <img src={BaseComponent.Constantes.loginPasswordIcon} id="input_img" />
                   </div>
                   <button type="submit"> Iniciar sesión </button>

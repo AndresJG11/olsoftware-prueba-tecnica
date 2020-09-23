@@ -12,7 +12,6 @@ class MyApp extends BaseComponent {
 
     this.myPanel = React.createRef();
     this.ajuste = React.createRef();
-    console.log(BaseComponent.isLogged)
   }
   render() {
     const { Component, pageProps } = this.props;

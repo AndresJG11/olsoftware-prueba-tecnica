@@ -18,9 +18,13 @@ class BaseComponent extends Component{
         this.isLogged = this.isLogged.bind(this);
         this.logout = this.logout.bind(this);
         this.redirectTo = this.redirectTo.bind(this);
-    }
 
+    }
+    
     componentDidMount(){
+        if(!BaseComponent.isLogged){
+            this.redirectTo("/login", "/login");
+        }
     }
     
     login(data){
@@ -43,12 +47,8 @@ class BaseComponent extends Component{
 
     isLogged(){ return BaseComponent.isLogged }
 
-    redirectTo(to, alias, query){
-		Router.push({
-            pathname: to,
-            alias: alias,
-            query: query
-        });
+    redirectTo(to, alias){
+		Router.push(to, alias);
     }
     
 }

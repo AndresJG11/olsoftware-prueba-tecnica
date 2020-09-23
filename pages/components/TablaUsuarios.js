@@ -23,8 +23,10 @@ class TablaUsuarios extends BaseComponent {
     }
 
     async componentDidMount() {
-        this.data = await this.getUsuariosExistentes();
-        this.setPage(1);
+        if(BaseComponent.isLogged){
+            this.data = await this.getUsuariosExistentes();
+            this.setPage(1);
+        }
     }
     handleOnRegister(e) {
         e.preventDefault();
@@ -178,35 +180,35 @@ class TablaUsuarios extends BaseComponent {
                         </div>
                         <div>
                             <label htmlFor="nombre"> Nombres </label>
-                            <input ref={this.nombre} type="text" name="nombre" />
+                            <input autoComplete="off" ref={this.nombre} type="text" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Apellidos </label>
-                            <input ref={this.apellidos} type="text" name="nombre" />
+                            <input autoComplete="off" ref={this.apellidos} type="text" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Identificación (C.C) </label>
-                            <input ref={this.identificacion} type="number" name="nombre" />
+                            <input autoComplete="off" ref={this.identificacion} type="number" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Rol asociado </label>
-                            <input ref={this.rolAsociado} type="select" name="nombre" />
+                            <input autoComplete="off" ref={this.rolAsociado} type="select" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Estado </label>
-                            <input ref={this.estado} type="select" name="nombre" />
+                            <input autoComplete="off" ref={this.estado} type="select" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Contraseña </label>
-                            <input ref={this.password} type="password" name="nombre" />
+                            <input autoComplete="off" ref={this.password} type="password" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Teléfono </label>
-                            <input ref={this.telefono} type="number" name="nombre" />
+                            <input autoComplete="off" ref={this.telefono} type="number" name="nombre" />
                         </div>
                         <div>
                             <label htmlFor="nombre"> Correo Electrónico </label>
-                            <input ref={this.correo} type="text" name="nombre" />
+                            <input autoComplete="off" ref={this.correo} type="text" name="nombre" />
                         </div>
                         <div className="container-buttons">
                             <button className="btn-filtrar" type="submit"> Filtrar </button>
