@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import BaseComponent from './components/BaseComponent';
+import { login } from './components/helper';
 
 //import loginUserIcon from '../styles/icons/loginUserIcon.svg'
 
@@ -12,48 +13,22 @@ class Home extends BaseComponent {
     this.username = React.createRef();
     this.password = React.createRef();
 
-    this.state = {isLoading: false}
+    this.state = { isLoading: false }
   }
 
   render() {
 
-    const {isLoading} = this.state
+    const { isLoading } = this.state
 
     const handleOnSubmit = async (e) => {
       e.preventDefault();
 
-      this.setState( {isLoading: true} )
+      this.setState({ isLoading: true })
 
       const username = this.username.current.value
       const password = this.password.current.value
 
-      const self = this;
-      await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          "username": username,
-          "password": password
-        })
-      })
-        .then((response) => response.json())
-        .then(async function (responseJson) {
-          if (responseJson[0] !== false) {
-            self.username.current.value = "";
-            self.password.current.value = "";
-            self.login(responseJson[0]);
-            self.redirectTo("/home", "/home");
-          }
-          else {
-            console.log("fallo al iniciar sesion")
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      login(username, password, this);
 
 
     }
@@ -65,7 +40,12 @@ class Home extends BaseComponent {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={`${isLoading&&'loading'} `}>
+        <div className="login-background">
+          <div className="login-background-effect">
+          </div>
+        </div>
+
+        <main className={`${isLoading && 'loading'} `}>
           <div className="login-texto">
             <span> Aplicación OLSoftware </span>
             <p> Prueba práctica Front-end senior </p>
@@ -89,11 +69,11 @@ class Home extends BaseComponent {
             <div className="modal-vista">
               <h1> Estamos preparando todo para tí </h1>
               <img src="./loading.gif" />
-            </div> 
+            </div>
           </div>
         </main>
 
-        <footer className="footer-login">
+      <footer className="footer-login">
           OLSoftware - 2020
       </footer>
 

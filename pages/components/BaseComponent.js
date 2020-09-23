@@ -1,6 +1,7 @@
 import react, {Component} from 'react'
 
 import Router       from 'next/router';
+import { login, usuariosExistentes } from './helper';
 
 
 class BaseComponent extends Component{
@@ -18,6 +19,10 @@ class BaseComponent extends Component{
         this.logout = this.logout.bind(this);
         this.redirectTo = this.redirectTo.bind(this);
     }
+
+    componentDidMount(){
+
+    }
     
     login(data){
         BaseComponent.isLogged = true;
@@ -28,7 +33,13 @@ class BaseComponent extends Component{
 		BaseComponent.isLogged = false;
 		BaseComponent.dataLogged = {};
 		this.redirectTo("/", "/");
-	}
+    }
+    
+    getUsuariosExistentes(){
+        if(BaseComponent.isLogged){
+            return usuariosExistentes;
+        }
+    }
 
     isLogged(){ return BaseComponent.isLogged }
 
