@@ -199,7 +199,7 @@ class TablaUsuarios extends BaseComponent {
                         <div>
                             <label htmlFor="rolAsociado"> Rol Asociado </label>
                             <select name="rolAsociado" ref={this.rolAsociado}>
-                                <option value="administrador" selected> Administrador </option>
+                                <option value="administrador"> Administrador </option>
                                 <option value="conductor"> Conductor </option>
                                 <option value="coordinador"> Coordinador </option>
                                 <option value="digitalizadorGC-UNO"> Digitalizador GC-UNO </option>
@@ -208,7 +208,7 @@ class TablaUsuarios extends BaseComponent {
                         <div>
                             <label htmlFor="estado"> Estado </label>
                             <select name="estado" ref={this.estado}>
-                                <option value="activo" selected> Activo </option>
+                                <option value="activo"> Activo </option>
                                 <option value="inactivo"> Inactivo </option>
                             </select>
                         </div>
@@ -253,7 +253,7 @@ class TablaUsuarios extends BaseComponent {
                                             <div>
                                                 <label htmlFor="estado"> Estado </label>
                                                 <select name="estado">
-                                                    <option value="activo" selected> Activo </option>
+                                                    <option value="activo"> Activo </option>
                                                     <option value="inactivo"> Inactivo </option>
                                                 </select>
                                             </div>
@@ -268,7 +268,7 @@ class TablaUsuarios extends BaseComponent {
                                         <div className="crearUsuario-row">
                                             <label htmlFor="estado"> Estado </label>
                                             <select name="estado" >
-                                                <option value="activo" selected> Activo </option>
+                                                <option value="activo"> Activo </option>
                                                 <option value="inactivo"> Inactivo </option>
                                             </select>
                                         </div>

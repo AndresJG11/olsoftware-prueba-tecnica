@@ -1,6 +1,6 @@
 import React from 'react'
-import BaseComponent from '../components/BaseComponent';
-import { login } from '../components/helper';
+import BaseComponent from '../../components/BaseComponent';
+import { login } from '../../components/helper';
 
 class Login extends BaseComponent {
 
@@ -58,7 +58,7 @@ class Login extends BaseComponent {
               <div className="modal">
                 <div className="modal-vista">
                   <h1> Estamos preparando todo para tí </h1>
-                  <img src="./loading.gif" />
+                  <img src="/loading.gif" />
                 </div>
               </div>
             </main>

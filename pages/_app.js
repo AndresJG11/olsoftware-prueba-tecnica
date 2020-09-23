@@ -1,10 +1,8 @@
 import '../styles/globals.scss'
 import Head from 'next/head'
-import LeftPanel from './components/LeftPanel'
-import { Component } from 'react';
-import Header from './components/Header';
-import BaseComponent from './components/BaseComponent';
-import Home from './index'
+import LeftPanel from '../components/LeftPanel'
+import Header from '../components/Header';
+import BaseComponent from '../components/BaseComponent';
 
 class MyApp extends BaseComponent {
   constructor(props) {

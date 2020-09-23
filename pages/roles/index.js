@@ -1,8 +1,7 @@
 import React from 'react'
-import BaseComponent from '../components/BaseComponent';
-import LeftPanel from '../components/LeftPanel'
+import BaseComponent from '../../components/BaseComponent';
 
-import TablaUsuarios from '../components/TablaUsuarios'
+import TablaUsuarios from '../../components/TablaUsuarios'
 
 class index extends BaseComponent {
 
