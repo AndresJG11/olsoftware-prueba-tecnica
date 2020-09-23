@@ -1,39 +1,32 @@
-# Next.js Sass Starter
+# OLSOFTWARE TECHNICAL TEST SSR WITH NEXT.JS
 
-Use Sass to start your Next.js app with CSS superpowers!
+## Prerequisites
+- `yarn = 1.22.4`
+- `nodeJS = 14.5.0`
 
-## ⚡️ Quick Start
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/project?template=https://github.com/colbyfayock/next-sass-starter)
+## Initial configuration
 
-## 🚀 Getting Started
+$ yarn install
 
-Run the following command to create a new project with this Starter:
 
-```
-yarn create next-app my-app -e https://github.com/colbyfayock/next-sass-starter
-# or
-npx create-next-app my-app -e https://github.com/colbyfayock/next-sass-starter
-```
+Installs all packages dependencies for this project
 
-Once the project and dependencies are finished installing, you can navigate to that directory and start up the development server with:
-```
-yarn dev
-# or
-npm run dev
-```
+## Run in dev mode
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see your new project!
+$ yarn run dev
 
-## 🧐 What's inside?
-This Starter includes [Sass](https://sass-lang.com/) which is a way to provide superpowers to your CSS.
 
-The rest of the Starter is based off of the Next.js default starter.
+Runs the app in the development mode.
 
-## 📚 Learn More About Next.js
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 
-To learn more about Next.js, take a look at the following resources:
+## Generate build and run
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+$ yarn build
+$ yarn start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+Builds the app for production to the `build` folder. It correctly bundles NextJS in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes. Your app is ready to be deployed!. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
+
